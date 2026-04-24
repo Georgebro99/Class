@@ -5,6 +5,7 @@ const classRoutes = require('./classes');
 const assignmentRoutes = require('./assignments');
 const announcementRoutes = require('./announcements');
 const studentRoutes = require('./student');
+const teacherRoutes = require('./teacher');
 const { authenticateUser } = require('../middleware/auth');
 
 // Auth routes
@@ -31,6 +32,9 @@ router.use('/announcements', announcementRoutes);
 
 // Student routes
 router.use('/student', studentRoutes);
+
+// Teacher routes
+router.use('/teacher', teacherRoutes);
 
 // Home
 router.get('/', (req, res) => {

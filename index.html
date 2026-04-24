@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Classwork Classroom</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --primary: #1f73e6;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .nav {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+    }
+
+    .brand {
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    .hero {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 { margin-top: 0; font-size: 2rem; }
+    .hero p { color: var(--muted); }
+
+    .actions {
+      margin-top: 1rem;
+      display: flex;
+      gap: .75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 8px;
+      padding: .7rem 1rem;
+      text-decoration: none;
+      display: inline-block;
+      font-weight: 600;
+    }
+
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-secondary { background: #e8eefc; color: #1e40af; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+    }
+
+    .card h3 { margin-top: 0; }
+
+    .note {
+      margin-top: 1.25rem;
+      padding: 1rem;
+      border-left: 4px solid var(--primary);
+      background: #eef4ff;
+      color: #1e3a8a;
+      border-radius: 6px;
+      font-size: .95rem;
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a class="brand" href="/">📚 Classwork Classroom</a>
+  </nav>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Welcome to Classwork</h1>
+      <p>A classroom site for teachers and students to manage classes, assignments, and announcements.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#login">Login</a>
+        <a class="btn btn-secondary" href="#register">Register</a>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h3>For Teachers</h3>
+        <p>Create classes, post announcements, publish assignments, and review submissions.</p>
+      </article>
+      <article class="card">
+        <h3>For Students</h3>
+        <p>Join classes using class codes, submit work, and track due dates in one place.</p>
+      </article>
+      <article class="card">
+        <h3>Class Stream</h3>
+        <p>See announcements and assignment updates quickly without searching around.</p>
+      </article>
+    </section>
+
+
+    <section id="login" class="card" style="margin-top: 1rem;">
+      <h2>Login</h2>
+      <p style="color: var(--muted);">Sign in to continue to your class dashboard.</p>
+      <form>
+        <label for="login-email">Email</label><br />
+        <input id="login-email" type="email" placeholder="name@example.com" style="width:100%;margin:.35rem 0 .75rem;padding:.6rem;border:1px solid var(--border);border-radius:8px;" />
+        <label for="login-password">Password</label><br />
+        <input id="login-password" type="password" placeholder="••••••••" style="width:100%;margin:.35rem 0 .75rem;padding:.6rem;border:1px solid var(--border);border-radius:8px;" />
+        <button type="button" class="btn btn-primary">Login</button>
+      </form>
+    </section>
+
+    <section id="register" class="card" style="margin-top: 1rem;">
+      <h2>Register</h2>
+      <p style="color: var(--muted);">Create a teacher or student account in the same page.</p>
+      <form>
+        <label for="register-name">Full Name</label><br />
+        <input id="register-name" type="text" placeholder="Jane Doe" style="width:100%;margin:.35rem 0 .75rem;padding:.6rem;border:1px solid var(--border);border-radius:8px;" />
+        <label for="register-email">Email</label><br />
+        <input id="register-email" type="email" placeholder="name@example.com" style="width:100%;margin:.35rem 0 .75rem;padding:.6rem;border:1px solid var(--border);border-radius:8px;" />
+        <label for="register-role">Role</label><br />
+        <select id="register-role" style="width:100%;margin:.35rem 0 .75rem;padding:.6rem;border:1px solid var(--border);border-radius:8px;">
+          <option>Student</option>
+          <option>Teacher</option>
+        </select>
+        <button type="button" class="btn btn-secondary">Create Account</button>
+      </form>
+    </section>
+
+    <div class="note">
+      If you are viewing this via static hosting (like GitHub Pages), this file ensures the site shows a real webpage instead of the repository README.
+    </div>
+  </main>
+</body>
+</html>

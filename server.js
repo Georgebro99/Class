@@ -34,6 +34,7 @@ app.set('views', path.join(__dirname, 'views'));
 // Make db available to routes
 app.use((req, res, next) => {
   req.db = db;
+  res.locals.user = req.session?.user || null;
   next();
 });
 

@@ -116,4 +116,4 @@ router.post('/submit/:assignmentId', authenticateUser, authorizeRole(['student']
   }
 });
 
-module.module = router;
+module.exports = router;

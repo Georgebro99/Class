@@ -1,4 +1,4 @@
-<%- include('../layout', { title: 'Student Dashboard - Classroom' }) %>
+<%- include('../partials/header', { title: 'Student Dashboard - Classroom' }) %>
 
 <div class="container">
   <h1>Welcome, <%= user.firstName %>!</h1>
@@ -42,3 +42,5 @@
     <p class="text-muted">No upcoming assignments.</p>
   <% } %>
 </div>
+
+<%- include('../partials/footer') %>
