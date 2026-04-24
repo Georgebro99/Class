@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= typeof title !== 'undefined' ? title : 'Classroom' %></title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/" class="navbar-brand">📚 Classroom</a>
+    <ul class="navbar-nav">
+      <% if (user) { %>
+        <li><span>Welcome, <%= user.firstName %></span></li>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <% if (user.role === 'teacher') { %>
+          <li><a href="/classes/create">Create Class</a></li>
+        <% } else { %>
+          <li><a href="/student/join">Join Class</a></li>
+        <% } %>
+        <li><a href="/logout">Logout</a></li>
+      <% } else { %>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+      <% } %>
+    </ul>
+  </nav>
+
+  <% if (typeof error !== 'undefined' && error) { %>
+    <div class="container">
+      <div class="alert alert-error">
+        <%= error %>
+      </div>
+    </div>
+  <% } %>
+
+  <% if (typeof success !== 'undefined' && success) { %>
+    <div class="container">
+      <div class="alert alert-success">
+        <%= success %>
+      </div>
+    </div>
+  <% } %>
