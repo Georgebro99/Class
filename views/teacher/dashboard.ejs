@@ -1,0 +1,37 @@
+<%- include('../layout', { title: 'Teacher Dashboard - Classroom' }) %>
+
+<div class="container">
+  <h1>Welcome, <%= user.firstName %>!</h1>
+  <p class="text-muted">Teacher Dashboard</p>
+
+  <a href="/classes/create" class="btn btn-primary" style="margin-bottom: 2rem;">Create New Class</a>
+
+  <h2>My Classes</h2>
+  <% if (classes.length > 0) { %>
+    <div class="grid">
+      <% classes.forEach(classItem => { %>
+        <div class="card">
+          <h3><a href="/classes/<%= classItem.id %>" style="text-decoration: none; color: #1f73e6;"><%= classItem.name %></a></h3>
+          <p class="text-muted"><%= classItem.description || 'No description' %></p>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0;">
+            <div>
+              <p style="font-size: 0.85rem; color: #5f6368;">Students</p>
+              <p style="font-size: 1.5rem; font-weight: 500;"><%= classItem.studentCount %></p>
+            </div>
+            <div>
+              <p style="font-size: 0.85rem; color: #5f6368;">Assignments</p>
+              <p style="font-size: 1.5rem; font-weight: 500;"><%= classItem.assignmentCount %></p>
+            </div>
+          </div>
+          <div class="class-code">Code: <%= classItem.code %></div>
+          <a href="/classes/<%= classItem.id %>" class="btn btn-primary" style="margin-top: 1rem; width: 100%; text-align: center;">Manage Class</a>
+        </div>
+      <% }); %>
+    </div>
+  <% } else { %>
+    <div class="card text-center">
+      <p class="text-muted">You haven't created any classes yet.</p>
+      <a href="/classes/create" class="btn btn-primary" style="margin-top: 1rem;">Create Your First Class</a>
+    </div>
+  <% } %>
+</div>

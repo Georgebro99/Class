@@ -1,0 +1,22 @@
+<%- include('../layout', { title: 'Join Class - Classroom' }) %>
+
+<div class="container">
+  <div style="max-width: 400px; margin: 3rem auto;">
+    <h1>Join a Class</h1>
+    <p class="text-muted">Enter your class code to join</p>
+
+    <form method="POST" action="/student/join" class="card">
+      <div class="form-group">
+        <label for="classCode">Class Code *</label>
+        <input type="text" id="classCode" name="classCode" placeholder="e.g., ABC123" required style="text-transform: uppercase;">
+        <p class="text-muted" style="font-size: 0.85rem; margin-top: 0.5rem;">Ask your teacher for the class code</p>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block">Join Class</button>
+    </form>
+
+    <div class="text-center" style="margin-top: 1.5rem;">
+      <a href="/student/dashboard" style="color: #1f73e6; text-decoration: none;">Back to Dashboard</a>
+    </div>
+  </div>
+</div>

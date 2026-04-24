@@ -1,0 +1,34 @@
+<%- include('../layout', { title: 'Edit Assignment - Classroom' }) %>
+
+<div class="container">
+  <div style="max-width: 600px; margin: 0 auto;">
+    <h1>Edit Assignment</h1>
+
+    <form method="POST" action="/assignments/<%= assignment.id %>/edit" class="card">
+      <div class="form-group">
+        <label for="title">Title *</label>
+        <input type="text" id="title" name="title" value="<%= assignment.title %>" required>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Instructions</label>
+        <textarea id="description" name="description"><%= assignment.description || '' %></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="dueDate">Due Date</label>
+        <input type="datetime-local" id="dueDate" name="dueDate" value="<%= assignment.due_date ? new Date(assignment.due_date).toISOString().slice(0, 16) : '' %>">
+      </div>
+
+      <div class="form-group">
+        <label for="maxPoints">Max Points</label>
+        <input type="number" id="maxPoints" name="maxPoints" value="<%= assignment.max_points %>" min="1">
+      </div>
+
+      <div style="display: flex; gap: 1rem;">
+        <button type="submit" class="btn btn-primary" style="flex: 1;">Save Changes</button>
+        <a href="/assignments/<%= assignment.id %>" class="btn btn-secondary" style="flex: 1; text-align: center;">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>

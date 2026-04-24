@@ -1,0 +1,44 @@
+<%- include('../layout', { title: 'Student Dashboard - Classroom' }) %>
+
+<div class="container">
+  <h1>Welcome, <%= user.firstName %>!</h1>
+  <p class="text-muted">Student Dashboard</p>
+
+  <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+    <a href="/student/join" class="btn btn-primary">Join a Class</a>
+  </div>
+
+  <h2>My Classes</h2>
+  <% if (classes.length > 0) { %>
+    <div class="grid">
+      <% classes.forEach(classItem => { %>
+        <div class="card">
+          <h3><a href="/classes/<%= classItem.id %>" style="text-decoration: none; color: #1f73e6;"><%= classItem.name %></a></h3>
+          <p class="text-muted"><%= classItem.description || 'No description' %></p>
+          <% if (classItem.subject) { %>
+            <p><strong>Subject:</strong> <%= classItem.subject %></p>
+          <% } %>
+          <a href="/classes/<%= classItem.id %>" class="btn btn-primary" style="margin-top: 1rem; width: 100%; text-align: center;">Open Class</a>
+        </div>
+      <% }); %>
+    </div>
+  <% } else { %>
+    <div class="card text-center">
+      <p class="text-muted">You haven't joined any classes yet.</p>
+      <a href="/student/join" class="btn btn-primary" style="margin-top: 1rem;">Join a Class</a>
+    </div>
+  <% } %>
+
+  <h2 style="margin-top: 2rem;">Upcoming Assignments</h2>
+  <% if (upcomingAssignments.length > 0) { %>
+    <% upcomingAssignments.forEach(assignment => { %>
+      <div class="assignment-item">
+        <h3><a href="/assignments/<%= assignment.id %>" style="text-decoration: none; color: #1f73e6;"><%= assignment.title %></a></h3>
+        <p class="text-muted"><%= assignment.class_name %></p>
+        <p class="due-date">Due: <%= new Date(assignment.due_date).toLocaleDateString() %></p>
+      </div>
+    <% }); %>
+  <% } else { %>
+    <p class="text-muted">No upcoming assignments.</p>
+  <% } %>
+</div>

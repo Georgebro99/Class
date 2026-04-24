@@ -1,0 +1,46 @@
+<%- include('../layout', { title: 'Register - Classroom' }) %>
+
+<div class="auth-container">
+  <h1>Register</h1>
+
+  <form method="POST" action="/register">
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input type="text" id="firstName" name="firstName" required>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="text" id="lastName" name="lastName" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+
+    <div class="form-group">
+      <label for="role">I am a:</label>
+      <select id="role" name="role" required>
+        <option value="student">Student</option>
+        <option value="teacher">Teacher</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required>
+    </div>
+
+    <div class="form-group">
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block">Register</button>
+  </form>
+
+  <div class="auth-link">
+    Already have an account? <a href="/login">Login here</a>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<%- include('../layout', { title: 'Create Class - Classroom' }) %>
+
+<div class="container">
+  <div style="max-width: 600px; margin: 0 auto;">
+    <h1>Create a New Class</h1>
+    <p class="text-muted">Set up your classroom and start teaching</p>
+
+    <form method="POST" action="/classes/create" class="card">
+      <div class="form-group">
+        <label for="name">Class Name *</label>
+        <input type="text" id="name" name="name" placeholder="e.g., Biology 101" required>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" name="description" placeholder="Add a description for your class"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" placeholder="e.g., Biology">
+      </div>
+
+      <div class="form-group">
+        <label for="room">Room/Section</label>
+        <input type="text" id="room" name="room" placeholder="e.g., Room 101">
+      </div>
+
+      <div style="display: flex; gap: 1rem;">
+        <button type="submit" class="btn btn-primary" style="flex: 1;">Create Class</button>
+        <a href="/dashboard" class="btn btn-secondary" style="flex: 1; text-align: center;">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>

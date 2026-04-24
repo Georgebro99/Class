@@ -1,0 +1,25 @@
+<%- include('../layout', { title: 'Create Announcement - Classroom' }) %>
+
+<div class="container">
+  <div style="max-width: 600px; margin: 0 auto;">
+    <h1>Create Announcement</h1>
+    <p class="text-muted"><%= class.name %></p>
+
+    <form method="POST" action="/announcements/create/<%= class.id %>" class="card">
+      <div class="form-group">
+        <label for="title">Title *</label>
+        <input type="text" id="title" name="title" placeholder="e.g., Important Update" required>
+      </div>
+
+      <div class="form-group">
+        <label for="content">Message *</label>
+        <textarea id="content" name="content" placeholder="Type your announcement..." required></textarea>
+      </div>
+
+      <div style="display: flex; gap: 1rem;">
+        <button type="submit" class="btn btn-primary" style="flex: 1;">Post Announcement</button>
+        <a href="/classes/<%= class.id %>" class="btn btn-secondary" style="flex: 1; text-align: center;">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>

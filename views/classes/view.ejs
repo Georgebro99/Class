@@ -1,0 +1,101 @@
+<%- include('../layout', { title: class.name }) %>
+
+<div class="class-header">
+  <div class="container">
+    <h1><%= class.name %></h1>
+    <p><%= class.description || 'No description' %></p>
+    <% if (isTeacher) { %>
+      <div class="class-code">Code: <%= class.code %></div>
+    <% } %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('stream')">Stream</button>
+    <button class="tab" onclick="switchTab('assignments')">Assignments</button>
+    <button class="tab" onclick="switchTab('students')">Students</button>
+    <% if (isTeacher) { %>
+      <button class="tab" onclick="switchTab('settings')">Settings</button>
+    <% } %>
+  </div>
+
+  <!-- Stream Tab -->
+  <div id="stream" class="tab-content">
+    <% if (isTeacher) { %>
+      <a href="/announcements/create/<%= class.id %>" class="btn btn-primary" style="margin-bottom: 1.5rem;">Make Announcement</a>
+    <% } %>
+
+    <% if (announcements.length > 0) { %>
+      <% announcements.forEach(announcement => { %>
+        <div class="announcement">
+          <div class="announcement-header">
+            <div>
+              <h3><%= announcement.title %></h3>
+              <p class="announcement-date">by <%= announcement.first_name %> <%= announcement.last_name %> • <%= new Date(announcement.created_at).toLocaleDateString() %></p>
+            </div>
+            <% if (isTeacher) { %>
+              <div class="announcement-actions">
+                <a href="/announcements/<%= announcement.id %>/edit" class="btn btn-secondary">Edit</a>
+                <form method="POST" action="/announcements/<%= announcement.id %>/delete" style="display: inline;">
+                  <button type="submit" class="btn btn-danger" onclick="return confirmDelete('Delete this announcement?')">Delete</button>
+                </form>
+              </div>
+            <% } %>
+          </div>
+          <p><%= announcement.content %></p>
+        </div>
+      <% }); %>
+    <% } else { %>
+      <p class="text-muted">No announcements yet.</p>
+    <% } %>
+  </div>
+
+  <!-- Assignments Tab -->
+  <div id="assignments" class="tab-content" style="display: none;">
+    <% if (isTeacher) { %>
+      <a href="/assignments/create/<%= class.id %>" class="btn btn-primary" style="margin-bottom: 1.5rem;">Create Assignment</a>
+    <% } %>
+
+    <% if (assignments.length > 0) { %>
+      <% assignments.forEach(assignment => { %>
+        <div class="assignment-item">
+          <h3><a href="/assignments/<%= assignment.id %>" style="text-decoration: none; color: #1f73e6;"><%= assignment.title %></a></h3>
+          <% if (assignment.due_date) { %>
+            <p class="due-date">Due: <%= new Date(assignment.due_date).toLocaleDateString() %></p>
+          <% } %>
+          <p><%= assignment.description %></p>
+          <div class="card-actions">
+            <a href="/assignments/<%= assignment.id %>" class="btn btn-secondary">View</a>
+            <% if (isTeacher) { %>
+              <a href="/assignments/<%= assignment.id %>/edit" class="btn btn-secondary">Edit</a>
+            <% } %>
+          </div>
+        </div>
+      <% }); %>
+    <% } else { %>
+      <p class="text-muted">No assignments yet.</p>
+    <% } %>
+  </div>
+
+  <!-- Students Tab -->
+  <div id="students" class="tab-content" style="display: none;">
+    <h2>Class Members (<%= students.length %>)</h2>
+    <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
+      <% students.forEach(student => { %>
+        <div class="card">
+          <p style="font-weight: 500;"><%= student.first_name %> <%= student.last_name %></p>
+          <p class="text-muted"><%= student.email %></p>
+          <p class="text-muted" style="font-size: 0.85rem;">Joined <%= new Date(student.joined_at).toLocaleDateString() %></p>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+
+  <!-- Settings Tab -->
+  <% if (isTeacher) { %>
+    <div id="settings" class="tab-content" style="display: none;">
+      <a href="/classes/<%= class.id %>/edit" class="btn btn-primary">Edit Class Details</a>
+    </div>
+  <% } %>
+</div>
