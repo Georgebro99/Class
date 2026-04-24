@@ -116,8 +116,8 @@
       <h1>Welcome to Classwork</h1>
       <p>A classroom site for teachers and students to manage classes, assignments, and announcements.</p>
       <div class="actions">
-        <a class="btn btn-primary" href="/login">Login</a>
-        <a class="btn btn-secondary" href="/register">Register</a>
+        <a class="btn btn-primary" href="#login">Login</a>
+        <a class="btn btn-secondary" href="#register">Register</a>
       </div>
     </section>
 
@@ -134,6 +134,36 @@
         <h3>Class Stream</h3>
         <p>See announcements and assignment updates quickly without searching around.</p>
       </article>
+    </section>
+
+
+    <section id="login" class="card" style="margin-top: 1rem;">
+      <h2>Login</h2>
+      <p style="color: var(--muted);">Sign in to continue to your class dashboard.</p>
+      <form>
+        <label for="login-email">Email</label><br />
+        <input id="login-email" type="email" placeholder="name@example.com" style="width:100%;margin:.35rem 0 .75rem;padding:.6rem;border:1px solid var(--border);border-radius:8px;" />
+        <label for="login-password">Password</label><br />
+        <input id="login-password" type="password" placeholder="••••••••" style="width:100%;margin:.35rem 0 .75rem;padding:.6rem;border:1px solid var(--border);border-radius:8px;" />
+        <button type="button" class="btn btn-primary">Login</button>
+      </form>
+    </section>
+
+    <section id="register" class="card" style="margin-top: 1rem;">
+      <h2>Register</h2>
+      <p style="color: var(--muted);">Create a teacher or student account in the same page.</p>
+      <form>
+        <label for="register-name">Full Name</label><br />
+        <input id="register-name" type="text" placeholder="Jane Doe" style="width:100%;margin:.35rem 0 .75rem;padding:.6rem;border:1px solid var(--border);border-radius:8px;" />
+        <label for="register-email">Email</label><br />
+        <input id="register-email" type="email" placeholder="name@example.com" style="width:100%;margin:.35rem 0 .75rem;padding:.6rem;border:1px solid var(--border);border-radius:8px;" />
+        <label for="register-role">Role</label><br />
+        <select id="register-role" style="width:100%;margin:.35rem 0 .75rem;padding:.6rem;border:1px solid var(--border);border-radius:8px;">
+          <option>Student</option>
+          <option>Teacher</option>
+        </select>
+        <button type="button" class="btn btn-secondary">Create Account</button>
+      </form>
     </section>
 
     <div class="note">
