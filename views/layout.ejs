@@ -43,7 +43,9 @@
     </div>
   <% } %>
 
-  <%- body %>
+  <% if (typeof body !== 'undefined') { %>
+    <%- body %>
+  <% } %>
 
   <script src="/js/main.js"></script>
 </body>
